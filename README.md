@@ -8,7 +8,8 @@ This project demonstrates a modern microservices architecture using Cloud Run fo
 
 ## 🏗️ Architecture
 
-<img width="977" height="960" alt="image" src="https://github.com/user-attachments/assets/923ce75a-c9fe-47ee-b814-5ee6b0aaee4f" />
+
+<img width="967" height="940" alt="image" src="https://github.com/user-attachments/assets/5eb615b5-7695-48b1-9c0b-4e0437a76c86" />
 
 
 

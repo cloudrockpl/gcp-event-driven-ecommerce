@@ -302,8 +302,8 @@ gcloud run deploy store-frontend \
 FRONTEND_URL=$(gcloud run services describe store-frontend --region $REGION --format='value(status.url)')
 
 echo "================================================================="
-echo "✅ DEPLOYMENT COMPLETE!"
+echo "DEPLOYMENT COMPLETE!"
 echo "================================================================="
-echo "🛠️  Backend Order API: $ORDER_URL/place-order"
-echo "🌐 Frontend Store UI: $FRONTEND_URL"
+echo " Backend Order API: $ORDER_URL/place-order"
+echo "Frontend Store UI: $FRONTEND_URL"
 echo "================================================================="

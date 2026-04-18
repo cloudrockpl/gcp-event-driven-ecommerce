@@ -1,24 +1,32 @@
-GCP Event-Driven E-Commerce Architecture 🛒☁️
+# GCP Event-Driven E-Commerce Architecture 🛒☁️
 
 A full-stack, serverless, event-driven e-commerce application built and deployed entirely on Google Cloud Platform (GCP).
 
 This project demonstrates a modern microservices architecture using Cloud Run for compute, Pub/Sub for asynchronous event messaging, and BigQuery for real-time data warehousing. It includes automated infrastructure provisioning via shell scripts.
 
-🏗️ Architecture
+---
+
+## 🏗️ Architecture
 
 <img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/d12a1774-425a-4e9a-9dea-998da5b11074" />
 
 
+---
+## 🧩 Core Components
 
-Core Components
+### Frontend (React/Vite)
+A dynamic e-commerce storefront with a shopping cart. It includes a smart auto-discovery mechanism with exponential backoff to automatically locate and securely connect to its sibling backend service.
 
-Frontend (React/Vite): A dynamic e-commerce storefront with a shopping cart. Features a smart auto-discovery mechanism with exponential backoff to automatically locate and connect to its sibling backend service securely.
+### Backend API (Python/Flask)
+A serverless REST API that receives orders and publishes them as events to Pub/Sub.
 
-Backend API (Python/Flask): A serverless REST API that receives orders and publishes them as events to Pub/Sub.
+### Event Router (Cloud Pub/Sub)
+The central nervous system of the platform. It decouples the frontend from downstream processing using asynchronous event delivery.
 
-Event Router (Cloud Pub/Sub): The central nervous system. Decouples the frontend from downstream processing.
+### Data Warehouse (BigQuery)
+Native Pub/Sub-to-BigQuery subscriptions stream raw order data directly into queryable columns without requiring intermediary Dataflow jobs.
 
-Data Warehouse (BigQuery): Native Pub/Sub-to-BigQuery subscriptions stream raw order data directly into queryable columns without the need for intermediary Dataflow jobs.
+---
 
 
 🚀 Quick Start

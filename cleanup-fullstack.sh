@@ -28,15 +28,28 @@ echo "Starting full stack cleanup for Project: $PROJECT_ID in Region: $REGION"
 echo "================================================================="
 
 # 1. Delete Cloud Run Services
+# echo "1. Cleaning up Cloud Run Services..."
+# for svc in order-service inventory-service billing-service shipping-service store-frontend; do
+#     echo "   Deleting $svc..."
+#     gcloud run services delete $svc --region $REGION --quiet || echo "   [Skipped] $svc not found."
+# done
+
 echo "1. Cleaning up Cloud Run Services..."
-for svc in order-service inventory-service billing-service shipping-service store-frontend; do
+for svc in order-service store-frontend; do
     echo "   Deleting $svc..."
     gcloud run services delete $svc --region $REGION --quiet || echo "   [Skipped] $svc not found."
 done
 
+
 # 2. Delete Pub/Sub Subscriptions
+# echo "2. Cleaning up Pub/Sub Subscriptions..."
+# for sub in inventory-sub billing-sub shipping-sub bq-orders-sub; do
+#     echo "   Deleting $sub..."
+#     gcloud pubsub subscriptions delete $sub --quiet || echo "   [Skipped] $sub not found."
+# done
+
 echo "2. Cleaning up Pub/Sub Subscriptions..."
-for sub in inventory-sub billing-sub shipping-sub bq-orders-sub; do
+for sub in bq-orders-sub; do
     echo "   Deleting $sub..."
     gcloud pubsub subscriptions delete $sub --quiet || echo "   [Skipped] $sub not found."
 done
@@ -46,10 +59,10 @@ echo "3. Cleaning up Pub/Sub Topics..."
 echo "   Deleting $TOPIC_ID..."
 gcloud pubsub topics delete $TOPIC_ID --quiet || echo "   [Skipped] $TOPIC_ID not found."
 
-for svc in inventory billing shipping; do
-    echo "   Deleting ${svc}-dlq..."
-    gcloud pubsub topics delete ${svc}-dlq --quiet || echo "   [Skipped] ${svc}-dlq not found."
-done
+# for svc in inventory billing shipping; do
+#     echo "   Deleting ${svc}-dlq..."
+#     gcloud pubsub topics delete ${svc}-dlq --quiet || echo "   [Skipped] ${svc}-dlq not found."
+# done
 
 # 4. Delete Artifact Registry Repository (Also deletes all Docker images inside)
 echo "4. Cleaning up Artifact Registry..."

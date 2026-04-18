@@ -42,54 +42,75 @@ Native Pub/Sub-to-BigQuery subscriptions stream raw order data directly into que
 ### Deployment
 
 #### 1) Clone this repository
-
+```bash
 git clone [https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git](https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git)
 
 cd gcp-event-driven-ecommerce
+```
 
+#### 2) Set your active GCP project
 
-Set your active GCP project:
-
+```bash
 gcloud config set project YOUR_PROJECT_ID
+```
 
+#### 3) Make the deployment script executable and run it
 
-Make the deployment script executable and run it:
-
+```bash
 chmod +x deploy-fullstack.sh
 ./deploy-fullstack.sh
+```
 
 
 Once completed, the script will output the live public URL for your React Frontend. Click it to start placing orders!
+---
 
-🧹 Clean Up
+## 🧹 Clean Up
 
 To avoid incurring unwanted charges, tear down the entire architecture when you are finished testing:
 
+```bash
 chmod +x cleanup-fullstack.sh
 ./cleanup-fullstack.sh
+```
 
+> **Note:** This cleanup script safely deletes the Cloud Run services, Pub/Sub topics and subscriptions, Artifact Registry repositories, BigQuery datasets, and custom IAM service accounts created by the deployment script.
 
-Note: This will safely delete the Cloud Run services, Pub/Sub topics/subscriptions, Artifact Registry repositories, BigQuery datasets, and custom IAM service accounts created by the deployment script.
+---
 
-📁 Repository Structure
+## 📁 Repository Structure
 
+```text
 .
 ├── App.jsx                 # React UI source code
-
-├── app.py                  # Flask Backend source code
-
+├── app.py                  # Flask backend source code
 ├── deploy-fullstack.sh     # Master deployment script (IaC)
-
 ├── cleanup-fullstack.sh    # Master teardown script
-
 └── README.md               # Project documentation
+```
+
+---
 
 
+## 🛠️ Tech Stack
 
-🛠️ Tech Stack
+### Frontend
+- React
+- Vite
+- Tailwind CSS
+- Lucide React
 
-Frontend: React, Vite, Tailwind CSS, Lucide React
+### Backend
+- Python
+- Flask
+- Gunicorn
 
-Backend: Python, Flask, Gunicorn
+### GCP Services
+- Cloud Run
+- Cloud Pub/Sub
+- BigQuery
+- Artifact Registry
+- Cloud Build
+- IAM
 
-GCP Services: Cloud Run, Cloud Pub/Sub, BigQuery, Artifact Registry, Cloud Build, IAM
+---

@@ -29,19 +29,19 @@ Native Pub/Sub-to-BigQuery subscriptions stream raw order data directly into que
 ---
 
 
-🚀 Quick Start
+## 🚀 Quick Start
 
-Prerequisites
+### Prerequisites
 
-A Google Cloud Platform (GCP) account.
+- ** A Google Cloud Platform (GCP) account.
 
-Google Cloud CLI (gcloud) installed and authenticated.
+- ** Google Cloud CLI (gcloud) installed and authenticated.
 
-Billing enabled on your GCP project.
+- ** Billing enabled on your GCP project.
 
-Deployment
+### Deployment
 
-Clone this repository:
+#### 1) Clone this repository
 
 git clone [https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git](https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git)
 

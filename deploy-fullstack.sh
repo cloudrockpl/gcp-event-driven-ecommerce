@@ -107,17 +107,17 @@ gcloud run deploy order-service \
     --allow-unauthenticated \
     --quiet
 
-# Deploy the private subscriber services (No unauthenticated access allowed)
-for svc in inventory billing shipping; do
-    echo "Deploying Private Subscriber Service: $svc..."
-    gcloud run deploy $svc-service \
-        --image $BACKEND_IMAGE \
-        --service-account $RUN_SA_EMAIL \
-        --set-env-vars SERVICE_NAME=$svc \
-        --region $REGION \
-        --no-allow-unauthenticated \
-        --quiet
-done
+# # Deploy the private subscriber services (No unauthenticated access allowed)
+# for svc in inventory billing shipping; do
+#     echo "Deploying Private Subscriber Service: $svc..."
+#     gcloud run deploy $svc-service \
+#         --image $BACKEND_IMAGE \
+#         --service-account $RUN_SA_EMAIL \
+#         --set-env-vars SERVICE_NAME=$svc \
+#         --region $REGION \
+#         --no-allow-unauthenticated \
+#         --quiet
+# done
 
 # =========================================================
 # 5. PUB/SUB SETUP & IAM CONFIGURATION
@@ -128,20 +128,20 @@ gcloud iam service-accounts create $SA_NAME --display-name "Pub/Sub Invoker SA" 
 echo "Waiting 10 seconds for Pub/Sub Invoker service account to propagate..."
 sleep 10
 
-for svc in inventory billing shipping; do
-    gcloud run services add-iam-policy-binding $svc-service \
-        --region=$REGION \
-        --member="serviceAccount:$SA_EMAIL" \
-        --role="roles/run.invoker" \
-        --quiet
-done
+# for svc in inventory billing shipping; do
+#     gcloud run services add-iam-policy-binding $svc-service \
+#         --region=$REGION \
+#         --member="serviceAccount:$SA_EMAIL" \
+#         --role="roles/run.invoker" \
+#         --quiet
+# done
 
 echo "Creating Main Topic and Dead-Letter Topics..."
 gcloud pubsub topics create $TOPIC_ID || echo "Topic exists"
 
-for svc in inventory billing shipping; do
-    gcloud pubsub topics create ${svc}-dlq || echo "DLQ exists"
-done
+# for svc in inventory billing shipping; do
+#     gcloud pubsub topics create ${svc}-dlq || echo "DLQ exists"
+# done
 
 echo "Configuring Pub/Sub Service Agent IAM..."
 gcloud beta services identity create --service=pubsub.googleapis.com --project=$PROJECT_ID
@@ -152,26 +152,26 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --condition=None \
     --quiet
 
-for svc in inventory billing shipping; do
-    gcloud pubsub topics add-iam-policy-binding ${svc}-dlq \
-        --member="$PUBSUB_SA" \
-        --role="roles/pubsub.publisher" \
-        --quiet
-done
+# for svc in inventory billing shipping; do
+#     gcloud pubsub topics add-iam-policy-binding ${svc}-dlq \
+#         --member="$PUBSUB_SA" \
+#         --role="roles/pubsub.publisher" \
+#         --quiet
+# done
 
-echo "Creating Fan-out Push Subscriptions..."
-for svc in inventory billing shipping; do
-    ENDPOINT=$(gcloud run services describe $svc-service --region $REGION --format='value(status.url)')/process
+# echo "Creating Fan-out Push Subscriptions..."
+# for svc in inventory billing shipping; do
+#     ENDPOINT=$(gcloud run services describe $svc-service --region $REGION --format='value(status.url)')/process
     
-    gcloud pubsub subscriptions create ${svc}-sub \
-        --topic=$TOPIC_ID \
-        --push-endpoint=$ENDPOINT \
-        --push-auth-service-account=$SA_EMAIL \
-        --dead-letter-topic=${svc}-dlq \
-        --max-delivery-attempts=5 \
-        --min-retry-delay=10s \
-        --max-retry-delay=600s || echo "Subscription exists, skipping creation."
-done
+#     gcloud pubsub subscriptions create ${svc}-sub \
+#         --topic=$TOPIC_ID \
+#         --push-endpoint=$ENDPOINT \
+#         --push-auth-service-account=$SA_EMAIL \
+#         --dead-letter-topic=${svc}-dlq \
+#         --max-delivery-attempts=5 \
+#         --min-retry-delay=10s \
+#         --max-retry-delay=600s || echo "Subscription exists, skipping creation."
+# done
 
 # =========================================================
 # 6. BIGQUERY INTEGRATION

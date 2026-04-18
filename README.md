@@ -6,22 +6,8 @@ This project demonstrates a modern microservices architecture using Cloud Run fo
 
 🏗️ Architecture
 
-graph TD
-    User([🛒 User / Web Browser]) -->|HTTP POST| UI[🌐 Frontend UI<br/>React on Cloud Run]
-    UI -->|/place-order| OrderAPI[⚙️ Order Service<br/>Flask on Cloud Run]
-    
-    OrderAPI -->|Publishes JSON Payload| Topic((📡 Pub/Sub Topic<br/>'order-placed'))
-    
-    Topic -->|Native Stream| BQSub[📊 bq-orders-sub]
-    BQSub -->|Direct Ingest| BQ[(🗄️ BigQuery<br/>'order_data.raw_orders')]
-    
-    classDef gcp fill:#e8f0fe,stroke:#1a73e8,stroke-width:2px,color:#1a73e8;
-    classDef pubsub fill:#fce8e6,stroke:#c5221f,stroke-width:2px,color:#c5221f;
-    classDef bq fill:#e6f4ea,stroke:#137333,stroke-width:2px,color:#137333;
-    
-    class UI,OrderAPI gcp;
-    class Topic,BQSub pubsub;
-    class BQ bq;
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/d12a1774-425a-4e9a-9dea-998da5b11074" />
+
 
 
 Core Components
@@ -59,6 +45,7 @@ Deployment
 Clone this repository:
 
 git clone [https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git](https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git)
+
 cd gcp-event-driven-ecommerce
 
 

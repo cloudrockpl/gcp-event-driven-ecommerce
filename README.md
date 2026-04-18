@@ -1,4 +1,4 @@
-# GCP Event-Driven E-Commerce Architecture 🛒☁️
+# GCP Event-Driven E-Commerce BigQuery Architecture 🛒☁️
 
 A full-stack, serverless, event-driven e-commerce application built and deployed entirely on Google Cloud Platform (GCP).
 

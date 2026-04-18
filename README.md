@@ -45,7 +45,7 @@ Native Pub/Sub-to-BigQuery subscriptions stream raw order data directly into que
 
 #### 1) Clone this repository
 ```bash
-[git clone ](https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git)
+git clone https://github.com/cloudrockpl/gcp-event-driven-ecommerce.git
 
 cd gcp-event-driven-ecommerce
 ```

@@ -101,5 +101,5 @@ echo "8. Cleaning up local generated directories..."
 rm -rf backend/ frontend/ || echo "   [Skipped] Local folders already removed."
 
 echo "================================================================="
-echo "✅ Full Stack Cleanup Complete!"
+echo "Full Stack Cleanup Complete!"
 echo "================================================================="

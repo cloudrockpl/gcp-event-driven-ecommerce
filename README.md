@@ -20,15 +20,6 @@ Event Router (Cloud Pub/Sub): The central nervous system. Decouples the frontend
 
 Data Warehouse (BigQuery): Native Pub/Sub-to-BigQuery subscriptions stream raw order data directly into queryable columns without the need for intermediary Dataflow jobs.
 
-✨ Features
-
-100% Serverless: Scales to zero, meaning you only pay for what you use.
-
-Infrastructure as Code (IaC): Single-click deployment scripts that handle IAM permissions, service accounts, and resource creation.
-
-Smart Frontend Auto-Discovery: The React app automatically infers the Cloud Run backend URL using domain hash matching, falling back to local ports for seamless dev/prod parity.
-
-Built-in Resilience: Exponential backoff retry logic built directly into the UI connection layer.
 
 🚀 Quick Start
 
@@ -76,10 +67,15 @@ Note: This will safely delete the Cloud Run services, Pub/Sub topics/subscriptio
 
 .
 ├── App.jsx                 # React UI source code
+
 ├── app.py                  # Flask Backend source code
+
 ├── deploy-fullstack.sh     # Master deployment script (IaC)
+
 ├── cleanup-fullstack.sh    # Master teardown script
+
 └── README.md               # Project documentation
+
 
 
 🛠️ Tech Stack

@@ -6,7 +6,7 @@ This project demonstrates a modern microservices architecture using Cloud Run fo
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 
 <img width="967" height="940" alt="image" src="https://github.com/user-attachments/assets/5eb615b5-7695-48b1-9c0b-4e0437a76c86" />
@@ -14,7 +14,7 @@ This project demonstrates a modern microservices architecture using Cloud Run fo
 
 
 ---
-## 🧩 Core Components
+## Core Components
 
 ### Frontend (React/Vite)
 A dynamic e-commerce storefront with a shopping cart. It includes a smart auto-discovery mechanism with exponential backoff to automatically locate and securely connect to its sibling backend service.
@@ -31,7 +31,7 @@ Native Pub/Sub-to-BigQuery subscriptions stream raw order data directly into que
 ---
 
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -67,7 +67,7 @@ chmod +x deploy-fullstack.sh
 Once completed, the script will output the live public URL for your React Frontend. Click it to start placing orders!
 ---
 
-## 🧹 Clean Up
+##  Clean Up
 
 To avoid incurring unwanted charges, tear down the entire architecture when you are finished testing:
 
@@ -80,7 +80,7 @@ chmod +x cleanup-fullstack.sh
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```text
 .
@@ -94,7 +94,7 @@ chmod +x cleanup-fullstack.sh
 ---
 
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React
